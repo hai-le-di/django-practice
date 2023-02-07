@@ -12,3 +12,4 @@ class CarAdmin(admin.ModelAdmin):
 
 admin.site.register(Tag)
 admin.site.unregister(Group)
+
