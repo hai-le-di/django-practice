@@ -1,6 +1,10 @@
 from django.db import models
 
 
+class Tag(models.Model):
+    tasks = models.CharField(max_length=255)
+
+
 class Task(models.Model):
     content = models.CharField(max_length=255)
     datetime = models.DateField(auto_now_add=True)
@@ -10,7 +14,3 @@ class Task(models.Model):
         Tag,
         related_name="tasks"
     )
-
-
-class Tag(models.Model):
-    tasks = models.ManyToManyField(Task, related_name="tags")
