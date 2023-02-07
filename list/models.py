@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Tag(models.Model):
-    tasks = models.CharField(max_length=255)
+    task = models.CharField(max_length=255)
 
 
 class Task(models.Model):
