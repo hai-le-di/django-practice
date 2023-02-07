@@ -5,8 +5,15 @@ from django.views import generic
 from .models import Tag, Task
 
 
-class TaskListView(generic.ListView):
-    model = Task
+def index(request):
+    """View function for the home page of the site."""
+    task_list = Task.objects.all()
+
+    context = {
+        "task_list": task_list,
+    }
+
+    return render(request, "list/task_list.html", context=context)
 
 
 class TaskCreateView(generic.CreateView):
