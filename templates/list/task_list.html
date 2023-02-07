@@ -14,6 +14,7 @@
           <th scope="col">Task</th>
           <th scope="col">Update</th>
           <th scope="col">Delete</th>
+          <th scope="col">Status</th>
         </tr>
       </thead>
       {% for task in task_list %}
@@ -34,7 +35,12 @@
               Done: {{ task.done }}
             </th>
             <td><a href="{% url 'list:task-update' pk=task.id %}">Update</a></td>
-            <td><a href="{% url 'list:task-delete' pk=task.id %}">Delete</a></td>
+            <td><a href="{% url 'list:task-delete' pk=task.id %}">Delete</a>
+            {% if task.done == True %}
+              <td><a href="{% url 'list:do-task' task_id=task.id param='undo' %}">Undo</a>
+            {% else %}
+              <td><a href="{% url 'list:do-task' task_id=task.id param='do' %}">Do</a>
+            {% endif %}
         </tr>
         {% endfor %}
       </tbody>
