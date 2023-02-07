@@ -28,8 +28,8 @@
               <br>
               Done: {{ task.done }}
             </th>
-            <td><a href="{% url 'list:task-update' %}">Update</a></td>
-            <td><a href="#">Delete</a></td>
+            <td><a href="{% url 'list:task-update' pk=task.id %}">Update</a></td>
+            <td><a href="{% url 'list:task-delete' pk=task.id %}">Delete</a></td>
         </tr>
         {% endfor %}
       </tbody>
