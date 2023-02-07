@@ -26,6 +26,11 @@
                 Deadline: {{ task.deadline }}
               {% endif %}
               <br>
+              Tags:
+              {% for tag in task.relevant_tags.all %}
+                {{ tag.name }}
+              {% endfor %}
+              <br>
               Done: {{ task.done }}
             </th>
             <td><a href="{% url 'list:task-update' pk=task.id %}">Update</a></td>
