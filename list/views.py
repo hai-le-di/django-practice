@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from models import Tag, Task
+from .models import Tag, Task
 
 
 def index(request):
