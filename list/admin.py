@@ -5,11 +5,10 @@ from django.contrib import admin
 
 
 @admin.register(Task)
-class CarAdmin(admin.ModelAdmin):
+class TaskAdmin(admin.ModelAdmin):
     search_fields = ("content", )
     list_filter = ("done",)
 
 
 admin.site.register(Tag)
 admin.site.unregister(Group)
-
