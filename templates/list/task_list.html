@@ -3,28 +3,37 @@
 {% block content %}
   <h1>
     Task list
-    <a href="{% url 'list:task-create' %}" class="btn btn-primary link-to-page">
+{#    <a href="{% url 'list:task-create' %}" class="btn btn-primary link-to-page">#}
       Create
-    </a>
-    <a href="{% url 'list:task-update' %}" class="btn btn-primary link-to-page">
-      Update
-    </a>
-    <a href="{% url 'list:task-delete' %}" class="btn btn-primary link-to-page">
-      Delete
     </a>
   </h1>
   {% if task_list %}
-    <ul>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Task</th>
+          <th scope="col">Update</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
       {% for task in task_list %}
-        <li>
-          Task: {{ task.content }} ({{ task.created_at }})
-          <br>
-          Deadline: {{ task.deadline }}
-          Relevant Tags: {{ task.relevant_tags }}
-          Done: {{ task.done }}
-        </li>
-      {% endfor %}
-    </ul>
+        <tbody>
+          <tr>
+            <th>
+              {{ task.content }} ({{ task.created_at }})
+              <br>
+              {% if task.deadline %}
+                Deadline: {{ task.deadline }}
+              {% endif %}
+              <br>
+              Done: {{ task.done }}
+            </th>
+            <td><a href="#">Update</a></td>
+            <td><a href="#">Delete</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   {% else %}
     <p>There are no tasks in the list</p>
   {% endif %}
