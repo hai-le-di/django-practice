@@ -14,3 +14,6 @@ class Task(models.Model):
         Tag,
         related_name="tasks"
     )
+
+    class Meta:
+        ordering = ['-done', '-datetime']
