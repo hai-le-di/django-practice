@@ -36,10 +36,10 @@
             </th>
             <td><a href="{% url 'list:task-update' pk=task.id %}">Update</a></td>
             <td><a href="{% url 'list:task-delete' pk=task.id %}">Delete</a>
-            {% if task.done == True %}
-              <td><a href="{% url 'list:do-task' task_id=task.id param='undo' %}">Undo</a>
+            {% if task.is_done == True %}
+              <td><a href="{% url 'list:do-task' task_id=task.id %}">Undo</a>
             {% else %}
-              <td><a href="{% url 'list:do-task' task_id=task.id param='do' %}">Do</a>
+              <td><a href="{% url 'list:do-task' task_id=task.id %}">Do</a>
             {% endif %}
         </tr>
         {% endfor %}

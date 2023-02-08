@@ -55,15 +55,15 @@ class TagDeleteView(generic.DeleteView):
     success_url = reverse_lazy("list:tag-list")
 
 
-def do_undo_task(request, task_id, param):
+def do_undo_task(request, task_id):
     task_obj = get_object_or_404(Task, id=task_id)
 
-    if task_obj and param == "undo":
-        task_obj.done = False
+    if task_obj.is_done is True:
+        task_obj.is_done = False
         task_obj.save()
 
-    elif task_obj and param == "do":
-        task_obj.done = True
+    elif task_obj.is_done is False:
+        task_obj.is_done = True
         task_obj.save()
 
     return redirect("list:task-list")
